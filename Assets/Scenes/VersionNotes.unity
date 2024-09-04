@@ -374,10 +374,10 @@ RectTransform:
   m_Father: {fileID: 1555032640}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 245, y: -30}
-  m_SizeDelta: {x: 475, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 110}
+  m_SizeDelta: {x: -15, y: -230}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &310233513
 MonoBehaviour:
@@ -407,7 +407,8 @@ MonoBehaviour:
     that helped to contribute to or provided knowledge in the process of creating
     this game \n   - Added a Version Notes screen to keep track of edits made for
     each version of the game throughout the term\n   - Added an alternate version
-    of the game where the game icon is a camel instead of the original dinosaur"
+    of the game where the game icon is a camel instead of the original dinosaur and
+    the pterodactyl is changed to a vulture"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1343,10 +1344,10 @@ RectTransform:
   m_Father: {fileID: 316620865}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: 250}
+  m_SizeDelta: {x: -308, y: -232}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1874720255
 MonoBehaviour:
