@@ -1123,7 +1123,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 3f36677e447cc08489bc352b398d4d5d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a4adcb26219de7b409b1f64896417cff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1143,7 +1143,7 @@ Transform:
   m_GameObject: {fileID: 1220007506}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1176,8 +1176,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: 705d902916fa10243867a9b614255a85, type: 3}
-  - {fileID: 21300000, guid: 9e34325f3cc64054694467b6a394f89d, type: 3}
+  - {fileID: 21300000, guid: a50bdaa5cfb00904d997c7165a72e1bc, type: 3}
+  - {fileID: 21300000, guid: 76fb762350ce4b04cace283dafb0f3bb, type: 3}
 --- !u!1 &1235793831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1673,7 +1673,7 @@ MonoBehaviour:
     spawnChance: 0.12
   - prefab: {fileID: 925337277722980792, guid: 115f18d01f932274da8e41bb0a89fa0d, type: 3}
     spawnChance: 0.1
-  - prefab: {fileID: 2497163716428298845, guid: fa6245cb934a805468235b080f83a786, type: 3}
+  - prefab: {fileID: 2497163716428298845, guid: d87c888e2555cc541a58e42c0a50e890, type: 3}
     spawnChance: 0.05
   minSpawnRate: 1
   maxSpawnRate: 2
