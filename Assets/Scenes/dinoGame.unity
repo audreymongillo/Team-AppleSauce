@@ -1163,6 +1163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravity: 19.62
   jumpForce: 8
+  jumpSound: {fileID: 0}
 --- !u!114 &1220007511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1483,6 +1484,7 @@ MonoBehaviour:
   scoreText: {fileID: 1204611886}
   hiscoreText: {fileID: 1235793833}
   retryButton: {fileID: 1954618268}
+  confettiManager: {fileID: 0}
 --- !u!4 &1696018481
 Transform:
   m_ObjectHideFlags: 0

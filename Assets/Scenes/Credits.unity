@@ -207,7 +207,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 563111079}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.9259259
+  m_Size: 0.77011496
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -376,8 +376,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2, y: 105}
-  m_SizeDelta: {x: -19, y: -220}
+  m_AnchoredPosition: {x: -2, y: 247.5}
+  m_SizeDelta: {x: -19, y: -505}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &310233513
 MonoBehaviour:
@@ -405,7 +405,9 @@ MonoBehaviour:
     - Worcester Polytechnic Insitute \n\nWe would also like to credit the following
     sources we used to create this project:\n   - Zigurous Tutorials : https://zigurous.com/tutorials/dino-game\n  
     - Youtube:\n      - https://www.youtube.com/watch?v=8kVeDbuqokU&t=241s\n     
-    - https://www.youtube.com/watch?v=DX7HyN7oJjE"
+    - https://www.youtube.com/watch?v=DX7HyN7oJjE\n      - https://www.youtube.com/watch?v=WwCwAV9BxsE\n     
+    - https://www.youtube.com/watch?v=9SNgs7Xv6M8\n   - PNGs\n      - https://www.coolgenerator.com/png-text-generator\n  
+    - Sound Effects\n      - https://pixabay.com/sound-effects/"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1303,7 +1305,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 20}
+  m_SizeDelta: {x: 0, y: 80}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1874720253
 GameObject:
