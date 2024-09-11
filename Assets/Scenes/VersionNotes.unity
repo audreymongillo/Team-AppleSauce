@@ -207,7 +207,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 563111079}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.549
+  m_Size: 0.5425
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -402,18 +402,18 @@ MonoBehaviour:
   m_text: "0.0.1.0s2 - \n   - Added a splash title screen upon start up that displays
     our team name \n   - Added another splash screen crediting WPI and Zigorous \n  
     - Added a jumping noise to when the camel jumps \n   - Added clicking noises
-    to each of the buttons for when they are selected (NOT DONE YET)\n   - Added
-    a 'juice feature' where confetti plays at the end of a game if the user has gotten
-    a high score that round\n\n0.0.1.0s1 - \n   - Added a Start Screen so the user
-    can navigate to the original and alternate versions of the game as well as the
-    Credits and Version Notes pages \n   - Preserved the original game by providing
-    a button that navigates to the original game and a seperate button that navigates
-    to a game with changes made by the team\n   - Added a Credits screen to credit
-    any sources or people that helped to contribute to or provided knowledge in the
-    process of creating this game \n   - Added a Version Notes screen to keep track
-    of edits made for each version of the game throughout the term\n   - Added an
-    alternate version of the game where the game icon is a camel instead of the original
-    dinosaur and the pterodactyl is changed to a vulture"
+    to each of the buttons for when they are selected\n   - Added a 'juice feature'
+    where confetti plays at the end of a game if the user has gotten a high score
+    that round\n\n0.0.1.0s1 - \n   - Added a Start Screen so the user can navigate
+    to the original and alternate versions of the game as well as the Credits and
+    Version Notes pages \n   - Preserved the original game by providing a button
+    that navigates to the original game and a seperate button that navigates to a
+    game with changes made by the team\n   - Added a Credits screen to credit any
+    sources or people that helped to contribute to or provided knowledge in the process
+    of creating this game \n   - Added a Version Notes screen to keep track of edits
+    made for each version of the game throughout the term\n   - Added an alternate
+    version of the game where the game icon is a camel instead of the original dinosaur
+    and the pterodactyl is changed to a vulture"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

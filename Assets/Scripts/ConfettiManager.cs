@@ -15,10 +15,6 @@ public class ConfettiManager : MonoBehaviour
             Debug.Log("Playing confetti!");
             confettiEffect.Play();  // Start the confetti effect
         }
-        else
-        {
-            Debug.LogError("Confetti effect is not assigned in ConfettiManager.");
-        }
     }
 }
 
