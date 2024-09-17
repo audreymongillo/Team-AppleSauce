@@ -48,6 +48,11 @@ public class Player : MonoBehaviour
         if (other.CompareTag("Obstacle"))
         {
             GameManager.Instance.GameOver();
-        }
+        }else if(other.CompareTag("Powerup")){
+
+		GameManager.Instance.SlowDown();
+	}
+
+
     }
 }

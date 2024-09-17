@@ -101,8 +101,26 @@ public class GameManager : MonoBehaviour
         spawner.gameObject.SetActive(false);
         gameOverText.gameObject.SetActive(true);
         retryButton.gameObject.SetActive(true);
+	
         UpdateHiscore();
     }
+
+
+    public void SlowDown()
+	{
+		float newSpeed = gameSpeed;
+		//float startTime = Time.time;
+		
+	
+		gameSpeed = 5f;
+		
+		
+		
+		//gameSpeed = newSpeed;
+
+	}
+
+
 
     public void UpdateHiscore()
 	{
