@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     private float score;
 
     private const string FirstRunKey = "FirstRun";
+    private bool isSlowedDown = false; // Flag for tracking if slowdown is active
 
     private void Awake()
     {
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Pause.ResumeGame();
         player = FindObjectOfType<Player>();
         spawner = FindObjectOfType<Spawner>();
 
@@ -88,58 +90,71 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        gameSpeed += gameSpeedIncrease * Time.deltaTime;
+        if (!isSlowedDown)
+        {
+            gameSpeed += gameSpeedIncrease * Time.deltaTime;
+        }
+        
         score += gameSpeed * Time.deltaTime;
         scoreText.text = Mathf.FloorToInt(score).ToString("D5");
     }
 
     public void GameOver()
     {
+        StopCoroutine("SlowDownCoroutine");
+
         gameSpeed = 0f;
         enabled = false;
         player.gameObject.SetActive(false);
         spawner.gameObject.SetActive(false);
         gameOverText.gameObject.SetActive(true);
         retryButton.gameObject.SetActive(true);
-	
+        
         UpdateHiscore();
     }
 
-
     public void SlowDown()
-	{
-		float newSpeed = gameSpeed;
-		//float startTime = Time.time;
-		
-	
-		gameSpeed = 5f;
-		
-		
-		
-		//gameSpeed = newSpeed;
+    {
+        if (!isSlowedDown)
+        {
+            StartCoroutine(SlowDownCoroutine());
+        }
+    }
 
-	}
+    private IEnumerator SlowDownCoroutine()
+    {
+        isSlowedDown = true;
+        float originalSpeed = gameSpeed;
+        gameSpeed = originalSpeed * (2f / 3f);
 
+        // Set the jump force to be slightly higher during slowdown
+        player.SetJumpForce(player.defaultJumpForce * 1.2f); // Adjust multiplier as needed
 
+        yield return new WaitForSecondsRealtime(5f);
+
+        gameSpeed = originalSpeed;
+        player.SetJumpForce(player.defaultJumpForce);
+        isSlowedDown = false;
+    }
 
     public void UpdateHiscore()
-	{
-		float hiscore = PlayerPrefs.GetFloat("hiscore", 0);
+    {
+        float hiscore = PlayerPrefs.GetFloat("hiscore", 0);
 
-		if (score > hiscore)
-		{
-			// Update high score
-			hiscore = score;
-			PlayerPrefs.SetFloat("hiscore", hiscore);
-			PlayerPrefs.Save(); // Save changes to PlayerPrefs
+        if (score > hiscore)
+        {
+            hiscore = score;
+            PlayerPrefs.SetFloat("hiscore", hiscore);
+            PlayerPrefs.Save(); // Save changes to PlayerPrefs
 
-			// Play confetti effect when a new high score is achieved
-			if (confettiManager != null)
-			{
-				Debug.Log("New high score! Triggering confetti.");
-				confettiManager.PlayConfetti();
-			}
-		}
-		hiscoreText.text = Mathf.FloorToInt(hiscore).ToString("D5");
-	}
+            // Play confetti effect when a new high score is achieved
+            if (confettiManager != null)
+            {
+                Debug.Log("New high score! Triggering confetti.");
+                confettiManager.PlayConfetti();
+            }
+        }
+
+        hiscoreText.text = Mathf.FloorToInt(hiscore).ToString("D5");
+    }
 }

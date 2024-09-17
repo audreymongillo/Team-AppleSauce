@@ -12,8 +12,8 @@ public class TimerSpawner : MonoBehaviour
 	
 
 
-	public float minSpawnRate = 30f;
-	public float maxSpawnRate = 60f;
+	public float minSpawnRate = 20f;
+	public float maxSpawnRate = 30f;
 	
 	private void OnEnable(){
 		Invoke(nameof(Spawn), Random.Range(minSpawnRate, maxSpawnRate));

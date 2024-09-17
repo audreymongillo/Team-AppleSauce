@@ -1,10 +1,10 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.EventSystems;  // Add this to access EventSystem
+using UnityEngine.EventSystems;
 
 public class Pause : MonoBehaviour
 {
-    private bool isPaused = false;
+    public static bool isPaused = false;
     public TextMeshProUGUI buttonText;
 
     public void TogglePause()
@@ -29,10 +29,10 @@ public class Pause : MonoBehaviour
         isPaused = true;
     }
 
-    private void ResumeGame()
+    public static void ResumeGame()
     {
         Time.timeScale = 1f;
         isPaused = false;
     }
-}
 
+}
