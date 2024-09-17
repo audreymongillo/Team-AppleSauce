@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obstacle
   - Powerup
+  - Building
   layers:
   - Default
   - TransparentFX
@@ -42,4 +43,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Sprite
+    uniqueID: 3857300011
+    locked: 0
+  - name: Background
+    uniqueID: 1864012959
     locked: 0

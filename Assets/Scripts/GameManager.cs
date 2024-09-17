@@ -20,7 +20,8 @@ public class GameManager : MonoBehaviour
 
     private Player player;
     private Spawner spawner;
-    private float score;
+    public float score;
+    public static float currentScore;
 
     private const string FirstRunKey = "FirstRun";
     private bool isSlowedDown = false; // Flag for tracking if slowdown is active
@@ -86,6 +87,11 @@ public class GameManager : MonoBehaviour
         gameOverText.gameObject.SetActive(false);
         retryButton.gameObject.SetActive(false);
         UpdateHiscore();
+
+
+
+
+
     }
 
     private void Update()
@@ -97,6 +103,9 @@ public class GameManager : MonoBehaviour
         
         score += gameSpeed * Time.deltaTime;
         scoreText.text = Mathf.FloorToInt(score).ToString("D5");
+	currentScore = score;
+	//SwitchBackGround();
+
     }
 
     public void GameOver()
@@ -114,12 +123,24 @@ public class GameManager : MonoBehaviour
     }
 
     public void SlowDown()
+<<<<<<< Updated upstream
     {
         if (!isSlowedDown)
         {
             StartCoroutine(SlowDownCoroutine());
         }
     }
+=======
+	{
+		float newSpeed = gameSpeed;
+		
+		
+	
+		gameSpeed = 5f;
+		
+		
+	
+>>>>>>> Stashed changes
 
     private IEnumerator SlowDownCoroutine()
     {
@@ -147,6 +168,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetFloat("hiscore", hiscore);
             PlayerPrefs.Save(); // Save changes to PlayerPrefs
 
+<<<<<<< Updated upstream
             // Play confetti effect when a new high score is achieved
             if (confettiManager != null)
             {
@@ -157,4 +179,26 @@ public class GameManager : MonoBehaviour
 
         hiscoreText.text = Mathf.FloorToInt(hiscore).ToString("D5");
     }
+=======
+			// Play confetti effect when a new high score is achieved
+			if (confettiManager != null)
+			{
+				Debug.Log("New high score! Triggering confetti.");
+				confettiManager.PlayConfetti();
+			}
+		}
+		hiscoreText.text = Mathf.FloorToInt(hiscore).ToString("D5");
+
+
+
+
+
+	}
+
+
+	
+
+
+
+>>>>>>> Stashed changes
 }
