@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     private const string FirstRunKey = "FirstRun";
     private bool isSlowedDown = false; // Flag for tracking if slowdown is active
+    private Coroutine slowdownCoroutine = null; // To track the active coroutine
 
     private void Awake()
     {
@@ -48,7 +49,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Pause.ResumeGame();
+        Pause.ResumeGame(); // Reset pause state on home button click
         player = FindObjectOfType<Player>();
         spawner = FindObjectOfType<Spawner>();
 
@@ -60,7 +61,6 @@ public class GameManager : MonoBehaviour
         // Check if this is the first run
         if (PlayerPrefs.GetInt(FirstRunKey, 0) == 0)
         {
-            // First time opening the game, initialize settings
             PlayerPrefs.SetFloat("hiscore", 0);
             PlayerPrefs.SetInt(FirstRunKey, 1); // Set flag to indicate game has been opened before
             PlayerPrefs.Save();
@@ -71,8 +71,16 @@ public class GameManager : MonoBehaviour
 
     public void NewGame()
     {
-        Obstacle[] obstacles = FindObjectsOfType<Obstacle>();
+        // Reset slowdown state at the start of a new game
+        if (slowdownCoroutine != null)
+        {
+            StopCoroutine(slowdownCoroutine);
+            slowdownCoroutine = null;
+        }
+        isSlowedDown = false;
 
+        // Destroy existing obstacles
+        Obstacle[] obstacles = FindObjectsOfType<Obstacle>();
         foreach (var obstacle in obstacles)
         {
             Destroy(obstacle.gameObject);
@@ -87,11 +95,6 @@ public class GameManager : MonoBehaviour
         gameOverText.gameObject.SetActive(false);
         retryButton.gameObject.SetActive(false);
         UpdateHiscore();
-
-
-
-
-
     }
 
     private void Update()
@@ -100,17 +103,20 @@ public class GameManager : MonoBehaviour
         {
             gameSpeed += gameSpeedIncrease * Time.deltaTime;
         }
-        
+
         score += gameSpeed * Time.deltaTime;
         scoreText.text = Mathf.FloorToInt(score).ToString("D5");
-	currentScore = score;
-	//SwitchBackGround();
-
+        currentScore = score;
     }
 
     public void GameOver()
     {
-        StopCoroutine("SlowDownCoroutine");
+        // Stop the slowdown coroutine and reset speed to prevent continued movement
+        if (slowdownCoroutine != null)
+        {
+            StopCoroutine(slowdownCoroutine);
+            slowdownCoroutine = null;
+        }
 
         gameSpeed = 0f;
         enabled = false;
@@ -118,29 +124,17 @@ public class GameManager : MonoBehaviour
         spawner.gameObject.SetActive(false);
         gameOverText.gameObject.SetActive(true);
         retryButton.gameObject.SetActive(true);
-        
+
         UpdateHiscore();
     }
 
     public void SlowDown()
-<<<<<<< Updated upstream
     {
-        if (!isSlowedDown)
+        if (!isSlowedDown && slowdownCoroutine == null)
         {
-            StartCoroutine(SlowDownCoroutine());
+            slowdownCoroutine = StartCoroutine(SlowDownCoroutine());
         }
     }
-=======
-	{
-		float newSpeed = gameSpeed;
-		
-		
-	
-		gameSpeed = 5f;
-		
-		
-	
->>>>>>> Stashed changes
 
     private IEnumerator SlowDownCoroutine()
     {
@@ -156,6 +150,7 @@ public class GameManager : MonoBehaviour
         gameSpeed = originalSpeed;
         player.SetJumpForce(player.defaultJumpForce);
         isSlowedDown = false;
+        slowdownCoroutine = null;
     }
 
     public void UpdateHiscore()
@@ -168,37 +163,13 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetFloat("hiscore", hiscore);
             PlayerPrefs.Save(); // Save changes to PlayerPrefs
 
-<<<<<<< Updated upstream
             // Play confetti effect when a new high score is achieved
             if (confettiManager != null)
             {
-                Debug.Log("New high score! Triggering confetti.");
                 confettiManager.PlayConfetti();
             }
         }
 
         hiscoreText.text = Mathf.FloorToInt(hiscore).ToString("D5");
     }
-=======
-			// Play confetti effect when a new high score is achieved
-			if (confettiManager != null)
-			{
-				Debug.Log("New high score! Triggering confetti.");
-				confettiManager.PlayConfetti();
-			}
-		}
-		hiscoreText.text = Mathf.FloorToInt(hiscore).ToString("D5");
-
-
-
-
-
-	}
-
-
-	
-
-
-
->>>>>>> Stashed changes
 }
