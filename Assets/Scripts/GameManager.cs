@@ -27,6 +27,10 @@ public class GameManager : MonoBehaviour
     private bool isSlowedDown = false; // Flag for tracking if slowdown is active
     private Coroutine slowdownCoroutine = null; // To track the active coroutine
 
+
+
+    public AudioSource deathSound;
+
     private void Awake()
     {
         if (Instance == null)
@@ -117,6 +121,7 @@ public class GameManager : MonoBehaviour
             StopCoroutine(slowdownCoroutine);
             slowdownCoroutine = null;
         }
+	deathSound.Play();
 
         gameSpeed = 0f;
         enabled = false;

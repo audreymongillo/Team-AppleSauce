@@ -4,6 +4,9 @@ public class ConfettiManager : MonoBehaviour
 {
     public ParticleSystem confettiEffect;  // Assign this in the Inspector
 
+    public AudioSource confettiSound;
+
+
     public void PlayConfetti()
     {
         if (confettiEffect != null)
@@ -14,6 +17,7 @@ public class ConfettiManager : MonoBehaviour
             }
             Debug.Log("Playing confetti!");
             confettiEffect.Play();  // Start the confetti effect
+	    confettiSound.Play();   //play confetti sound effect
         }
     }
 }

@@ -12,6 +12,9 @@ public class Player : MonoBehaviour
     private Vector3 direction;
     public AudioSource jumpSound; 
 
+
+
+
     private void Awake()
     {
         character = GetComponent<CharacterController>();
@@ -38,6 +41,8 @@ public class Player : MonoBehaviour
                 if (jumpSound != null)
                 {
                     jumpSound.Play();
+                    
+
                 }
             }
         }
@@ -48,8 +53,9 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Obstacle"))
-        {
+        { 
             GameManager.Instance.GameOver();
+	    
         }
         else if (other.CompareTag("Powerup"))
         {

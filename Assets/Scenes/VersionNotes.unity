@@ -207,7 +207,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 563111079}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.5263636
+  m_Size: 0.3861818
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -534,13 +534,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "0.0.1.0s3 - \n   - Added a Pause button which pauses the game when pressed\n  
-    - Added a Quit button that will close out the game\n   - Added a powerup that
-    will slow down the player when collected\n   - Added a juice feature that changes
-    the background when the player reaches 200\n\n0.0.1.0s2 - \n   - Added a splash
-    title screen upon start up that displays our team name \n   - Added another splash
-    screen crediting WPI and Zigorous \n   - Added a jumping noise to when the camel
-    jumps \n   - Added clicking noises to each of the buttons for when they are selected\n  
+  m_text: "0.0.1.0s4 - \n  - Added new sprites for the cactuses\n  - Added sound
+    effect for the confetti animation\n  - Added sound effect for when player dies\n\n0.0.1.0s3
+    - \n   - Added a Pause button which pauses the game when pressed\n   - Added
+    a Quit button that will close out the game\n   - Added a powerup that will slow
+    down the player when collected\n   - Added a juice feature that changes the background
+    when the player reaches 200\n\n0.0.1.0s2 - \n   - Added a splash title screen
+    upon start up that displays our team name \n   - Added another splash screen
+    crediting WPI and Zigorous \n   - Added a jumping noise to when the camel jumps
+    \n   - Added clicking noises to each of the buttons for when they are selected\n  
     - Added a 'juice feature' where confetti plays at the end of a game if the user
     has gotten a high score that round\n\n0.0.1.0s1 - \n   - Added a Start Screen
     so the user can navigate to the original and alternate versions of the game as
