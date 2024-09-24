@@ -1154,6 +1154,7 @@ GameObject:
   - component: {fileID: 1220007507}
   - component: {fileID: 1220007510}
   - component: {fileID: 1220007511}
+  - component: {fileID: 1220007512}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1259,7 +1260,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: 19.62
-  jumpForce: 8
+  defaultJumpForce: 8
+  slowedJumpForce: 10
   jumpSound: {fileID: 0}
 --- !u!114 &1220007511
 MonoBehaviour:
@@ -1276,6 +1278,20 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: 705d902916fa10243867a9b614255a85, type: 3}
   - {fileID: 21300000, guid: 9e34325f3cc64054694467b6a394f89d, type: 3}
+--- !u!114 &1220007512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220007506}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed192dd24294964fabb8e183f77f3cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravity: 19.62
+  jumpForce: 8
 --- !u!1 &1235793831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1581,7 +1597,10 @@ MonoBehaviour:
   scoreText: {fileID: 1204611886}
   hiscoreText: {fileID: 1235793833}
   retryButton: {fileID: 1954618268}
+  secondLifeButton: {fileID: 0}
   confettiManager: {fileID: 0}
+  score: 0
+  deathSound: {fileID: 0}
 --- !u!4 &1696018481
 Transform:
   m_ObjectHideFlags: 0

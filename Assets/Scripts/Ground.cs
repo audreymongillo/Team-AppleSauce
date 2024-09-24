@@ -9,31 +9,41 @@ public class Ground : MonoBehaviour
 
 
 	private void Awake(){
+		
 		meshRenderer = GetComponent<MeshRenderer>();
 			
 	}
 
 
 	private void Update(){
+		if(MainMenu.altGame){
+
 		
-		if(GameManager.currentScore < 200){
+			if(GameManager.currentScore < 200){
 			
-			GetComponent<MeshRenderer>().enabled = true;
-			GetComponent<BoxCollider>().enabled = true;
+				GetComponent<MeshRenderer>().enabled = true;
+				GetComponent<BoxCollider>().enabled = true;
 
-			float speed = GameManager.Instance.gameSpeed / transform.localScale.x;
-			meshRenderer.material.mainTextureOffset += Vector2.right * speed * Time.deltaTime;
+				float speed = GameManager.Instance.gameSpeed / transform.localScale.x;
+				meshRenderer.material.mainTextureOffset += Vector2.right * speed * Time.deltaTime;
 
 
-		}else{
-			if(GetComponent<MeshRenderer>().enabled == true){
-				GetComponent<MeshRenderer>().enabled = !GetComponent<MeshRenderer>().enabled;
-				GetComponent<BoxCollider>().enabled = !GetComponent<BoxCollider>().enabled;
+			}else{
+				if(GetComponent<MeshRenderer>().enabled == true){
+					GetComponent<MeshRenderer>().enabled = !GetComponent<MeshRenderer>().enabled;
+					GetComponent<BoxCollider>().enabled = !GetComponent<BoxCollider>().enabled;
 
 			}
 		
 
 			
+			}
+
+		}else{
+
+			float speed = GameManager.Instance.gameSpeed / transform.localScale.x;
+			meshRenderer.material.mainTextureOffset += Vector2.right * speed * Time.deltaTime;
+
 		}
 
 

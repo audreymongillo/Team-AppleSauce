@@ -6,14 +6,18 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public AudioSource audioSource;
+    public static bool altGame;
 
     public void PlayOriginal()
+
     {
+	altGame = false;
         SceneManager.LoadSceneAsync("DinoGame");
     }
 
     public void PlayAlternate()
     {
+	altGame = true;
         SceneManager.LoadSceneAsync("AlternateGame");
     }
 
