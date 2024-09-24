@@ -6,11 +6,11 @@ public class Player : MonoBehaviour
 {
     public float gravity = 9.81f * 2f;
     public float defaultJumpForce = 8f;
-    public float slowedJumpForce = 10f; // Adjust as needed
+    public float slowedJumpForce = 10f;
     private float currentJumpForce;
     private CharacterController character;
     private Vector3 direction;
-    public AudioSource jumpSound; 
+    public AudioSource jumpSound;
 
 
 
@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     private void OnEnable()
     {
         direction = Vector3.zero;
-        currentJumpForce = defaultJumpForce; // Initialize with default value
+        currentJumpForce = defaultJumpForce;
     }
 
     private void Update()
@@ -63,9 +63,17 @@ public class Player : MonoBehaviour
         }
     }
 
-    // Call this method from GameManager to adjust jump force
     public void SetJumpForce(float jumpForce)
     {
         currentJumpForce = jumpForce;
+    }
+
+    public void ResetPlayer()
+    {
+        direction = Vector3.zero;
+        currentJumpForce = defaultJumpForce;
+        gameObject.SetActive(true); // Make sure the player is active
+        // Reset the player's position if necessary
+        transform.position = new Vector3(0, 1, 0); // Adjust the spawn position as needed
     }
 }

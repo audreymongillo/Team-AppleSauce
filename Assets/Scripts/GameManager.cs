@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI hiscoreText;
 
     public Button retryButton;
+    public Button secondLifeButton;
     public ConfettiManager confettiManager = null;
 
     private Player player;
@@ -24,8 +25,9 @@ public class GameManager : MonoBehaviour
     public static float currentScore;
 
     private const string FirstRunKey = "FirstRun";
-    private bool isSlowedDown = false; // Flag for tracking if slowdown is active
-    private Coroutine slowdownCoroutine = null; // To track the active coroutine
+    private bool isSlowedDown = false;
+    private Coroutine slowdownCoroutine = null;
+    private bool hasUsedExtraLife = false;
 
 
 
@@ -53,7 +55,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Pause.ResumeGame(); // Reset pause state on home button click
+        Pause.ResumeGame();
         player = FindObjectOfType<Player>();
         spawner = FindObjectOfType<Spawner>();
 
@@ -62,11 +64,10 @@ public class GameManager : MonoBehaviour
             Debug.LogError("ConfettiManager is not assigned in GameManager.");
         }
 
-        // Check if this is the first run
         if (PlayerPrefs.GetInt(FirstRunKey, 0) == 0)
         {
             PlayerPrefs.SetFloat("hiscore", 0);
-            PlayerPrefs.SetInt(FirstRunKey, 1); // Set flag to indicate game has been opened before
+            PlayerPrefs.SetInt(FirstRunKey, 1);
             PlayerPrefs.Save();
         }
 
@@ -75,7 +76,6 @@ public class GameManager : MonoBehaviour
 
     public void NewGame()
     {
-        // Reset slowdown state at the start of a new game
         if (slowdownCoroutine != null)
         {
             StopCoroutine(slowdownCoroutine);
@@ -83,21 +83,19 @@ public class GameManager : MonoBehaviour
         }
         isSlowedDown = false;
 
-        // Destroy existing obstacles
-        Obstacle[] obstacles = FindObjectsOfType<Obstacle>();
-        foreach (var obstacle in obstacles)
-        {
-            Destroy(obstacle.gameObject);
-        }
+        hasUsedExtraLife = false;
+
+        ClearObstacles();
 
         score = 0f;
         gameSpeed = initialGameSpeed;
 
         enabled = true;
         player.gameObject.SetActive(true);
-        spawner.gameObject.SetActive(true);
+        spawner.gameObject.SetActive(true); // Ensure the spawner is active
         gameOverText.gameObject.SetActive(false);
         retryButton.gameObject.SetActive(false);
+        secondLifeButton.gameObject.SetActive(false);
         UpdateHiscore();
     }
 
@@ -117,9 +115,18 @@ public class GameManager : MonoBehaviour
 
     {
 
-	float hiscore = PlayerPrefs.GetFloat("hiscore", 0);
+	    float hiscore = PlayerPrefs.GetFloat("hiscore", 0);
 
         // Stop the slowdown coroutine and reset speed to prevent continued movement
+        if (!hasUsedExtraLife)
+        {
+            secondLifeButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            secondLifeButton.gameObject.SetActive(false);
+        }
+
         if (slowdownCoroutine != null)
         {
             StopCoroutine(slowdownCoroutine);
@@ -135,11 +142,34 @@ public class GameManager : MonoBehaviour
         gameSpeed = 0f;
         enabled = false;
         player.gameObject.SetActive(false);
-        spawner.gameObject.SetActive(false);
+        spawner.gameObject.SetActive(false); // Disable spawner to stop generating obstacles
         gameOverText.gameObject.SetActive(true);
         retryButton.gameObject.SetActive(true);
 
         UpdateHiscore();
+    }
+
+    public void UseSecondLife()
+    {
+        hasUsedExtraLife = true;
+        player.ResetPlayer();
+        ClearObstacles();
+        gameOverText.gameObject.SetActive(false);
+        retryButton.gameObject.SetActive(false);
+        secondLifeButton.gameObject.SetActive(false);
+        gameSpeed = initialGameSpeed;
+        
+        spawner.gameObject.SetActive(true); // Activate the spawner to start generating obstacles again
+        enabled = true; // Enable GameManager updates
+    }
+
+    public void ClearObstacles()
+    {
+        Obstacle[] obstacles = FindObjectsOfType<Obstacle>();
+        foreach (var obstacle in obstacles)
+        {
+            Destroy(obstacle.gameObject);
+        }
     }
 
     public void SlowDown()
@@ -155,9 +185,7 @@ public class GameManager : MonoBehaviour
         isSlowedDown = true;
         float originalSpeed = gameSpeed;
         gameSpeed = originalSpeed * (2f / 3f);
-
-        // Set the jump force to be slightly higher during slowdown
-        player.SetJumpForce(player.defaultJumpForce * 1.2f); // Adjust multiplier as needed
+        player.SetJumpForce(player.defaultJumpForce * 1.2f);
 
         yield return new WaitForSecondsRealtime(5f);
 
@@ -175,9 +203,8 @@ public class GameManager : MonoBehaviour
         {
             hiscore = score;
             PlayerPrefs.SetFloat("hiscore", hiscore);
-            PlayerPrefs.Save(); // Save changes to PlayerPrefs
+            PlayerPrefs.Save();
 
-            // Play confetti effect when a new high score is achieved
             if (confettiManager != null)
             {
                 confettiManager.PlayConfetti();
