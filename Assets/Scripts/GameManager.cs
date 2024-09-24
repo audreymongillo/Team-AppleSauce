@@ -139,12 +139,12 @@ public class GameManager : MonoBehaviour
         spawner.gameObject.SetActive(false);
         gameOverText.gameObject.SetActive(true);
         retryButton.gameObject.SetActive(true);
-	
-	
+		
 
-        if (isAlternateGame && !hasUsedExtraLife)
+        if (MainMenu.altGame && !hasUsedExtraLife)
         {
             secondLifeButton.gameObject.SetActive(true);
+	    hasUsedExtraLife = true;
         }
 
         UpdateHiscore(); // Check if a new high score was achieved
