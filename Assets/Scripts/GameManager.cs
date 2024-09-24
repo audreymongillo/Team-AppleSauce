@@ -126,6 +126,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+	float hiscore = PlayerPrefs.GetFloat("hiscore", 0);
         if (slowdownCoroutine != null)
         {
             StopCoroutine(slowdownCoroutine);
@@ -138,8 +139,8 @@ public class GameManager : MonoBehaviour
         spawner.gameObject.SetActive(false);
         gameOverText.gameObject.SetActive(true);
         retryButton.gameObject.SetActive(true);
-
-        deathSound.Play();
+	
+	
 
         if (isAlternateGame && !hasUsedExtraLife)
         {
@@ -151,8 +152,17 @@ public class GameManager : MonoBehaviour
 
     public void UpdateHiscore()
     {
-        string hiscoreKey = isAlternateGame ? "hiscore_alternate" : "hiscore_original";
-        float hiscore = PlayerPrefs.GetFloat(hiscoreKey, 0);
+
+
+
+       string hiscoreKey = isAlternateGame ? "hiscore_alternate" : "hiscore_original";
+       float hiscore = PlayerPrefs.GetFloat(hiscoreKey, 0);
+
+
+	if((score < hiscore) && (enabled == false)){
+	    deathSound.Play();
+	}
+	
 
         // If the current score is higher than the saved high score
         if (score > hiscore)

@@ -2505,7 +2505,7 @@ MonoBehaviour:
   retryButton: {fileID: 1954618268}
   secondLifeButton: {fileID: 924299416}
   deathSound: {fileID: 1696018482}
-  highScoreSound: {fileID: 1696018482}
+  highScoreSound: {fileID: 1696018483}
   confettiManager: {fileID: 1776025911}
   score: 0
 --- !u!4 &1696018481
