@@ -114,14 +114,23 @@ public class GameManager : MonoBehaviour
     }
 
     public void GameOver()
+
     {
+
+	float hiscore = PlayerPrefs.GetFloat("hiscore", 0);
+
         // Stop the slowdown coroutine and reset speed to prevent continued movement
         if (slowdownCoroutine != null)
         {
             StopCoroutine(slowdownCoroutine);
             slowdownCoroutine = null;
         }
-	deathSound.Play();
+
+	if(score < hiscore)
+	{
+
+		deathSound.Play();
+	}
 
         gameSpeed = 0f;
         enabled = false;
