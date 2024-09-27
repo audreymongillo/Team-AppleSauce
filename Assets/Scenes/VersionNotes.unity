@@ -534,31 +534,31 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "0.0.1.0s5 - \n  - Feature 1 \n  - Feature 2\n  - Feature 3 \n  - For our
-    juice feature, we added a sound affect that says \"awesome\" every time the score
-    reaches a multiple of 100.\n\n0.0.1.0s4 - \n  - Added new sprites for the cactuses\n 
-    - Added sound effect for when player dies\n  - Added an extra life button, so
-    the player can have one extra life each game where their score won't reset\n 
-    - For our juice feature, we added a sound effect for the confetti animation so
-    the high score is extra exciting for the player\n\n0.0.1.0s3 - \n   - Added a
-    Pause button which pauses the game when pressed\n   - Added a Quit button that
-    will close out the game\n   - Added a powerup that will slow down the player
-    when collected\n   - Added a juice feature that changes the background when the
-    player reaches 200\n\n0.0.1.0s2 - \n   - Added a splash title screen upon start
-    up that displays our team name \n   - Added another splash screen crediting WPI
-    and Zigorous \n   - Added a jumping noise to when the camel jumps \n   - Added
-    clicking noises to each of the buttons for when they are selected\n   - Added
-    a 'juice feature' where confetti plays at the end of a game if the user has gotten
-    a high score that round\n\n0.0.1.0s1 - \n   - Added a Start Screen so the user
-    can navigate to the original and alternate versions of the game as well as the
-    Credits and Version Notes pages \n   - Preserved the original game by providing
-    a button that navigates to the original game and a seperate button that navigates
-    to a game with changes made by the team\n   - Added a Credits screen to credit
-    any sources or people that helped to contribute to or provided knowledge in the
-    process of creating this game \n   - Added a Version Notes screen to keep track
-    of edits made for each version of the game throughout the term\n   - Added an
-    alternate version of the game where the game icon is a camel instead of the original
-    dinosaur and the pterodactyl is changed to a vulture"
+  m_text: "0.0.1.0s5 - \n  - Changed the game icon to a camel \n  - Feature 2\n 
+    - Feature 3 \n  - For our juice feature, we added a sound affect that says \"awesome\"
+    every time the score reaches a multiple of 100.\n\n0.0.1.0s4 - \n  - Added new
+    sprites for the cactuses\n  - Added sound effect for when player dies\n  - Added
+    an extra life button, so the player can have one extra life each game where their
+    score won't reset\n  - For our juice feature, we added a sound effect for the
+    confetti animation so the high score is extra exciting for the player\n\n0.0.1.0s3
+    - \n   - Added a Pause button which pauses the game when pressed\n   - Added
+    a Quit button that will close out the game\n   - Added a powerup that will slow
+    down the player when collected\n   - Added a juice feature that changes the background
+    when the player reaches 200\n\n0.0.1.0s2 - \n   - Added a splash title screen
+    upon start up that displays our team name \n   - Added another splash screen
+    crediting WPI and Zigorous \n   - Added a jumping noise to when the camel jumps
+    \n   - Added clicking noises to each of the buttons for when they are selected\n  
+    - Added a 'juice feature' where confetti plays at the end of a game if the user
+    has gotten a high score that round\n\n0.0.1.0s1 - \n   - Added a Start Screen
+    so the user can navigate to the original and alternate versions of the game as
+    well as the Credits and Version Notes pages \n   - Preserved the original game
+    by providing a button that navigates to the original game and a seperate button
+    that navigates to a game with changes made by the team\n   - Added a Credits
+    screen to credit any sources or people that helped to contribute to or provided
+    knowledge in the process of creating this game \n   - Added a Version Notes screen
+    to keep track of edits made for each version of the game throughout the term\n  
+    - Added an alternate version of the game where the game icon is a camel instead
+    of the original dinosaur and the pterodactyl is changed to a vulture"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
