@@ -10,10 +10,12 @@ public class GameManager : MonoBehaviour
     public float initialGameSpeed = 5f;
     public float gameSpeedIncrease = 0.1f;
     public float gameSpeed { get; private set; }
+    public Vector3 camelStartPosition = new Vector3(-7f, 0f, 0f); // Example: adjust coordinates as necessary
 
     public TextMeshProUGUI gameOverText;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI hiscoreText;
+    public AudioSource milestoneSound;
 
     public Button retryButton;
     public Button secondLifeButton;
@@ -25,6 +27,7 @@ public class GameManager : MonoBehaviour
     private Spawner spawner;
     public float score;
     public static float currentScore;
+    private int nextMilestone = 100;
 
     private const string FirstRunKey = "FirstRun";
     private bool isAlternateGame;
@@ -56,7 +59,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        //ResetHighScore();
+        ResetHighScore();
         Pause.ResumeGame();
         player = FindObjectOfType<Player>();
         spawner = FindObjectOfType<Spawner>();
@@ -97,11 +100,11 @@ public class GameManager : MonoBehaviour
         isSlowedDown = false;
         hasUsedExtraLife = false; // Reset extra life
 
-        // Clear previous obstacles
         ClearObstacles();
 
         score = 0f;
         gameSpeed = initialGameSpeed;
+        nextMilestone = 100;
 
         enabled = true;
         player.gameObject.SetActive(true);
@@ -109,9 +112,9 @@ public class GameManager : MonoBehaviour
         gameOverText.gameObject.SetActive(false);
         retryButton.gameObject.SetActive(false);
         secondLifeButton.gameObject.SetActive(false);
-        UpdateHiscore(); // Update high score display at the start of the new game
+        player.transform.position = camelStartPosition; // Reset camel position
+        UpdateHiscore();
     }
-
     private void Update()
     {
         if (!isSlowedDown)
@@ -122,6 +125,21 @@ public class GameManager : MonoBehaviour
         score += gameSpeed * Time.deltaTime;
         scoreText.text = Mathf.FloorToInt(score).ToString("D5");
         currentScore = score;
+
+        if (Mathf.FloorToInt(score) >= nextMilestone)
+        {
+            PlayMilestoneSound();
+            nextMilestone += 100; // Set the next milestone to 100 more
+        }
+
+    }
+
+    private void PlayMilestoneSound()
+    {
+        if (milestoneSound != null)
+        {
+            milestoneSound.Play();
+        }
     }
 
     public void GameOver()
@@ -196,6 +214,7 @@ public class GameManager : MonoBehaviour
         secondLifeButton.gameObject.SetActive(false);
         gameSpeed = initialGameSpeed;
         spawner.gameObject.SetActive(true);
+        player.transform.position = camelStartPosition; // Reset camel position
         enabled = true;
     }
 
