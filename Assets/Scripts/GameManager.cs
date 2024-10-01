@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public float initialGameSpeed = 5f;
     public float gameSpeedIncrease = 0.1f;
     public float gameSpeed { get; private set; }
-    public Vector3 camelStartPosition = new Vector3(-7f, 0f, 0f); // Example: adjust coordinates as necessary
+    public Vector3 camelStartPosition = new Vector3(-5f, 0f, 0f); // Example: adjust coordinates as necessary
 
     public TextMeshProUGUI gameOverText;
     public TextMeshProUGUI scoreText;
@@ -214,9 +214,13 @@ public class GameManager : MonoBehaviour
         secondLifeButton.gameObject.SetActive(false);
         gameSpeed = initialGameSpeed;
         spawner.gameObject.SetActive(true);
-        player.transform.position = camelStartPosition; // Reset camel position
+        
+        // Adjust camel start position here if needed
+        player.transform.position = camelStartPosition + new Vector3(1f, 0f, 0f); // Move the camel forward slightly after extra life
+
         enabled = true;
     }
+
 
     public void ClearObstacles()
     {
