@@ -8364,7 +8364,7 @@ MonoBehaviour:
     spawnChance: 0.1
   - prefab: {fileID: 2497163716428298845, guid: d87c888e2555cc541a58e42c0a50e890, type: 3}
     spawnChance: 0.05
-  - prefab: {fileID: 2497163716428298845, guid: d87c888e2555cc541a58e42c0a50e890, type: 3}
+  - prefab: {fileID: 811488359271326879, guid: 75e16153add80a740b53b86836e81f63, type: 3}
     spawnChance: 0.03
   minSpawnRate: 1
   maxSpawnRate: 2.02
