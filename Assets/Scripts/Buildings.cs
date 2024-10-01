@@ -6,39 +6,49 @@ public class Buildings : MonoBehaviour
 {
    
 
-	private SpriteRenderer spriteRenderer;
+	private MeshRenderer meshRenderer;
+	private float offset;
 
 
 
 
 	private void Awake(){
-		spriteRenderer = GetComponent<SpriteRenderer>();
-
-
-		
+		meshRenderer = GetComponent<MeshRenderer>();
+		//offset = 0;
+	
 	}
 
 
 	private void Update(){
-		if(GameManager.currentScore >= 200){
-			GetComponent<SpriteRenderer>().enabled = true;
-			
-			
 
+           if(MainMenu.altGame){
+		if(GameManager.currentScore >= 200){
+			GetComponent<MeshRenderer>().enabled = true;
+		
+	
 			float speed = GameManager.Instance.gameSpeed / transform.localScale.x;
-			spriteRenderer.material.mainTextureOffset += Vector2.right * speed * Time.deltaTime;
+			meshRenderer.material.mainTextureOffset += Vector2.right * speed * Time.deltaTime;
+			offset += GameManager.Instance.gameSpeed * Time.deltaTime;
+			if(offset>=40){
+		
+				meshRenderer.material.mainTextureOffset = Vector2.zero;
+			//	meshRenderer.material.mainTextureOffset *= Vector2.right*speed*0;
+				offset = 0;
+			}
+
+			
+			
 		}else{
 
-			if(GetComponent<SpriteRenderer>().enabled == true){
-				GetComponent<SpriteRenderer>().enabled = !GetComponent<SpriteRenderer>().enabled;
-				
+			if(GetComponent<MeshRenderer>().enabled == true){
+				GetComponent<MeshRenderer>().enabled = !GetComponent<MeshRenderer>().enabled;
+			
 
-				
-
+		
 			}
 
 		}
-		
+	   }
 
 
 	
