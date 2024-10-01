@@ -207,7 +207,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 563111079}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.363125
+  m_Size: 0.26549998
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -534,8 +534,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "0.0.1.0s5 - \n  - Changed the game icon to a camel \n  - Feature 2\n 
-    - Feature 3 \n  - For our juice feature, we added a sound affect that says \"awesome\"
+  m_text: "0.0.1.0s5 - \n  - Changed the game icon to a camel \n  - Looped the buildings
+    background so that it scrolls with the ground and added a sky\n  - Added a wumpus
+    obstacle\n  - For our juice feature, we added a sound affect that says \"awesome\"
     every time the score reaches a multiple of 100.\n\n0.0.1.0s4 - \n  - Added new
     sprites for the cactuses\n  - Added sound effect for when player dies\n  - Added
     an extra life button, so the player can have one extra life each game where their
