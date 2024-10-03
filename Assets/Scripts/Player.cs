@@ -70,10 +70,27 @@ public class Player : MonoBehaviour
 
     public void ResetPlayer()
     {
+        // Temporarily disable CharacterController to allow manual position change
+        character.enabled = false;
+
+        // Set the starting position using ViewportToWorldPoint to ensure camel is on screen
+        Vector3 startPositionViewport = new Vector3(0.1f, 0.5f, Camera.main.nearClipPlane); // 10% from the left, centered vertically
+        Vector3 startPositionWorld = Camera.main.ViewportToWorldPoint(startPositionViewport);
+        
+        // Apply the calculated world position to the camel
+        transform.position = new Vector3(startPositionWorld.x, GameManager.Instance.camelStartPosition.y, GameManager.Instance.camelStartPosition.z);
+        Debug.Log("Player position reset to: " + transform.position);
+
+        // Reset the vertical velocity and jump force
         direction = Vector3.zero;
         currentJumpForce = defaultJumpForce;
-        gameObject.SetActive(true); // Make sure the player is active
-        // Reset the player's position if necessary
-        transform.position = new Vector3(0, 1, 0); // Adjust the spawn position as needed
+
+        // Re-enable the CharacterController
+        character.enabled = true;
+
+        // Ensure the player is active
+        gameObject.SetActive(true);
     }
+
+
 }

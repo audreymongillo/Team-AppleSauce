@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public float initialGameSpeed = 5f;
     public float gameSpeedIncrease = 0.1f;
     public float gameSpeed { get; private set; }
-    public Vector3 camelStartPosition = new Vector3(-5f, 0f, 0f); // Example: adjust coordinates as necessary
+    public Vector3 camelStartPosition = new Vector3(-3f, 0f, 0f); // Example: adjust coordinates as necessary
 
     public TextMeshProUGUI gameOverText;
     public TextMeshProUGUI scoreText;
@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        ResetHighScore();
+        //ResetHighScore();
         Pause.ResumeGame();
         player = FindObjectOfType<Player>();
         spawner = FindObjectOfType<Spawner>();
@@ -97,6 +97,7 @@ public class GameManager : MonoBehaviour
             StopCoroutine(slowdownCoroutine);
             slowdownCoroutine = null;
         }
+
         isSlowedDown = false;
         hasUsedExtraLife = false; // Reset extra life
 
@@ -112,9 +113,17 @@ public class GameManager : MonoBehaviour
         gameOverText.gameObject.SetActive(false);
         retryButton.gameObject.SetActive(false);
         secondLifeButton.gameObject.SetActive(false);
-        player.transform.position = camelStartPosition; // Reset camel position
+        
+        // Remove hard-coded reset positions
+        // player.transform.position = new Vector3(-1f, 0f, 0f); <- No longer needed
+        
+        // Use the Player's ResetPlayer method to handle positioning
+        player.ResetPlayer();
+
         UpdateHiscore();
     }
+
+
     private void Update()
     {
         if (!isSlowedDown)
@@ -177,9 +186,9 @@ public class GameManager : MonoBehaviour
        float hiscore = PlayerPrefs.GetFloat(hiscoreKey, 0);
 
 
-	if((score < hiscore) && (enabled == false)){
-	    deathSound.Play();
-	}
+        if((score < hiscore) && (enabled == false)){
+            deathSound.Play();
+        }
 	
 
         // If the current score is higher than the saved high score
@@ -207,16 +216,16 @@ public class GameManager : MonoBehaviour
     public void UseSecondLife()
     {
         hasUsedExtraLife = true;
+
+        // Reset the player to the start position (already handled in Player script)
         player.ResetPlayer();
+
         ClearObstacles();
         gameOverText.gameObject.SetActive(false);
         retryButton.gameObject.SetActive(false);
         secondLifeButton.gameObject.SetActive(false);
         gameSpeed = initialGameSpeed;
         spawner.gameObject.SetActive(true);
-        
-        // Adjust camel start position here if needed
-        player.transform.position = camelStartPosition + new Vector3(1f, 0f, 0f); // Move the camel forward slightly after extra life
 
         enabled = true;
     }
